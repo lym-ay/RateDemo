@@ -14,6 +14,8 @@
 
 
 #define OLACUSID   @"a674855f-909c-454e-8e3f-1f10c94f22f4"
+#define APPKEY @"d63f8238c7ec421bb9827c70d448ac44"
+#define APPSECRET @"f94109d9eece44b2ba0fbbfa23511e84"
 
 
 @interface VoiceView () <OlamiRecognizerDelegate> {
@@ -60,8 +62,8 @@
 - (void)setupData {
     olamiRecognizer= [[OlamiRecognizer alloc] init];
     olamiRecognizer.delegate = self;
-    [olamiRecognizer setAuthorization:@"d63f8238c7ec421bb9827c70d448ac44"
-                                  api:@"asr" appSecret:@"f94109d9eece44b2ba0fbbfa23511e84" cusid:OLACUSID];
+    [olamiRecognizer setAuthorization:APPKEY
+                                  api:@"asr" appSecret:APPSECRET cusid:OLACUSID];
     
     [olamiRecognizer setLocalization:LANGUAGE_SIMPLIFIED_CHINESE];//设置语系，这个必须在录音使用之前初始化
     _slotDic = [[NSMutableDictionary alloc] init];
@@ -180,50 +182,11 @@
 //处理modify
 - (void)processModify:(NSString*) str {
     
-    if ([str isEqualToString:@"play"]) {
-        
-            
-        
-        
-        
-       
-    }else if ([str isEqualToString:@"query_poet"]){//查询诗人
-        
-    }else if ([str isEqualToString:@"query_poem"]){//查询诗歌
-       
-        
-        
-            
-    }else if ([str isEqualToString:@"query_poet_poem"]){//根据诗人和作品查询
-       
-
-            
-    }
-    
-    
-   
-    
-    
 }
 
 
-- (NSArray*)processResult:(NSArray*)result type:(NSString*)type{
-    NSMutableArray *arry = [[NSMutableArray alloc] init];
-    for (NSDictionary *dic in result) {
-        NSString *value = dic[type];
-        [arry addObject:value];
-    }
-    
-    return arry;
-}
- 
 
 
-#pragma mark--slot节点处理函数
-//菜单功能处理函数
-- (void)processFunction {
-    
-}
 
  
 
